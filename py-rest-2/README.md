@@ -1,8 +1,8 @@
 # py-rest-2
 
-Another implementation of Subscribers REST API using Python 2.7, and Flask modules.
+Another implementation of Subscriber REST API using Python 2.7, and Flask modules.
 
-## Prerequisites
+### Prerequisites
 
 ```
 # virtualenv venv
@@ -11,7 +11,7 @@ Another implementation of Subscribers REST API using Python 2.7, and Flask modul
 # [..]
 ```
 
-## Model
+### Model
 
 ```
 Objects:
@@ -23,22 +23,22 @@ Objects:
             email - String
 ```
 
-## API Operations
+### API Operations
 
 ```
+  POST: /api/v1/subscriber             - Create new subscriber profile
    PUT: /api/v1/subscriber/<string:id> - Update subscriber by id
    GET: /api/v1/subscriber/<string:id> - Get subscriber by id
 DELETE: /api/v1/subscriber/<string:id> - Delete subscriber by id
-   GET: /api/v1/subscribers            - Get subscriber repository
-  POST: /api/v1/subscribers            - Create subscriber profile
+   GET: /api/v1/subscriber             - Get all subscribers in repository
 ```
 
-## Execute Program
+### Execute Program
 
 ```
 # python main.py
 ```
 
-## Test Tool
+### Test Tool
 
-Download `https://www.getpostman.com/`
+- https://www.getpostman.com/

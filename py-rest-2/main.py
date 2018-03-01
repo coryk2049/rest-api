@@ -6,7 +6,9 @@ from flask_restful import Resource, Api, reqparse
 
 app = Flask(__name__)
 api = Api(app, prefix="/api/v1")
+
 subscribers = {}
+
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, required=True,
                     help="This field must not be blank.")
@@ -56,9 +58,9 @@ class Subscriber(Resource):
         return make_resp(id)
 
 
-class SubscriberList(Resource):
+class Subscribers(Resource):
     def get(self):
-        return {"subscribers": subscribers}
+        return {"subscriber": subscribers}
 
     def post(self):
         args = parser.parse_args()
@@ -69,7 +71,7 @@ class SubscriberList(Resource):
 
 
 api.add_resource(Subscriber, '/subscriber/<string:id>')
-api.add_resource(SubscriberList, '/subscribers')
+api.add_resource(Subscribers, '/subscriber')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

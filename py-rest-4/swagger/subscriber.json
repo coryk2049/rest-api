@@ -1,0 +1,155 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Subscriber Profile (Simple)"
+  },
+  "host": "subscriber.swagger.io",
+  "basePath": "/v1",
+  "paths": {
+    "/subscriber": {
+      "post": {
+        "description": "",
+        "operationId": "addSubscriber",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Subscriber object that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Subscriber"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "description": "Update an existing subscriber",
+        "operationId": "updateSubscriber",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Subscriber object that needs to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Subscriber"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Id supplied"
+          },
+          "404": {
+            "description": "Subscriber not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/subscriber/query": {
+      "get": {
+        "description": "",
+        "operationId": "getSubscribers",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Subscriber"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/subscriber/{id}": {
+      "get": {
+        "description": "Returns a subscriber",
+        "operationId": "getSubscriberById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of subscriber to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Id supplied"
+          },
+          "404": {
+            "description": "Subscriber not found"
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes a subscriber",
+        "operationId": "deleteSubscriberById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of subscriber to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid Id supplied"
+          },
+          "404": {
+            "description": "Subscriber not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Subscriber": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "example": "neo"
+        },
+        "email": {
+          "type": "string",
+          "example": "neo@matrix.net"
+        },
+        "phoneno": {
+          "type": "string",
+          "example": "57164368888"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+## java-rest-2
+
+Simple implementation of Subscriber REST API using Java SpringBoot Actuator, JPA, and MySQL modules.
+
+### Prerequisites
+- Java JDK 1.8.x
+- Apache Maven 3.3.x
+- cURL 7.47.x
+- Postman 1.6.15
+- MySQL Server 5.7.21.x
+
+### Model
+
+```
+Objects:
+  poc_subscriber - Database (MySQL)
+     bl_subscriber - Table
+     +-------+--------------+------+-----+---------+----------------+
+     | Field | Type         | Null | Key | Default | Extra          |
+     +-------+--------------+------+-----+---------+----------------+
+     | id    | bigint(20)   | NO   | PRI | NULL    | auto_increment |
+     | email | varchar(255) | NO   |     | NULL    |                |
+     | name  | varchar(255) | NO   |     | NULL    |                |
+     | phone | varchar(255) | NO   |     | NULL    |                |
+     +-------+--------------+------+-----+---------+----------------+
+```
+
+### API Operations
+
+```
+  POST: /SpringBootSubscriberRest/api/v1/subscriber/          - Create new subscriber profile
+   PUT: /SpringBootSubscriberRest/api/v1/subscriber/<long:id> - Update subscriber by id
+   GET: /SpringBootSubscriberRest/api/v1/subscriber/<long:id> - Get subscriber by id
+DELETE: /SpringBootSubscriberRest/api/v1/subscriber/<long:id> - Delete subscriber by id
+   GET: /SpringBootSubscriberRest/api/v1/subscriber           - Get subscriber repository
+DELETE: /SpringBootSubscriberRest/api/v1/subscriber           - Delete subscriber repository
+```
+
+
+### Execute Program
+1) Package and then start REST server:
+
+```
+# mvn package && java -jar target/subscriber-rest-service-1.0.0.jar
+```
+
+2) Smoke test REST server:
+```
+# curl http://localhost:9090/SpringBootSubscriberRest/api/v1/../../health
+{"status":"UP"}
+```
+
+3) Execute `SpringBootSubscriberRestTestClient` for sanity API testing via `RestTemplate` library  
+
+### References
+- https://www.getpostman.com/
+- https://spring.io/guides/gs/spring-boot/
+- https://spring.io/guides/gs/actuator-service/
+- https://github.com/spring-projects/spring-boot/
+- http://websystique.com/spring-boot/spring-boot-rest-api-example/
+- http://zetcode.com/springboot/restcontroller/
+- https://www.mkyong.com/spring-boot/spring-boot-profile-based-properties-and-yaml-example/
+- https://www.callicoder.com/spring-boot-rest-api-tutorial-with-mysql-jpa-hibernate/
+- https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04
+- https://www.digitalocean.com/community/tutorials/a-basic-mysql-tutorial
+- https://codingexplained.com/coding/java/spring-framework/return-boolean-value-from-spring-data-jpa-query

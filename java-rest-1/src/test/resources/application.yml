@@ -1,0 +1,22 @@
+logging:
+  level:
+    .: debug
+    org.springframework: DEBUG
+    com.kinsoft: DEBUG
+
+spring:
+  profiles:
+    active: "poc"
+  main:
+    banner-mode: "off"
+
+server:
+  email: cory.kin@gmail.com
+
+---
+
+spring:
+    profiles: poc
+server:
+  port: 9090
+  contextPath: /SpringBootSubscriberRest

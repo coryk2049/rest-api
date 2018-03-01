@@ -9,7 +9,6 @@ api = Api(app, prefix="/api/v1")
 # subscriber key value store
 subscribers = {}
 
-
 class Subscriber(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument("email", type=str, required=True,
@@ -49,13 +48,12 @@ class Subscriber(Resource):
         return self.make_resp(name)
 
 
-class SubscriberList(Resource):
+class Subscribers(Resource):
     def get(self):
-        return {"subscribers": subscribers}
-
+        return {"subscriber": subscribers}
 
 api.add_resource(Subscriber, '/subscriber/<string:name>')
-api.add_resource(SubscriberList, '/subscribers')
+api.add_resource(subscriber, '/subscriber')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

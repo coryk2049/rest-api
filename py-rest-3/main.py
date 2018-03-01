@@ -83,7 +83,7 @@ class Subscriber(Resource):
             return {'ERROR': 'Unique constraint(s) violated, please fix your data'}, 400
 
 
-class SubscriberList(Resource):
+class Subscribers(Resource):
     def get(self):
         data = SubscriberTable.query.all()
         dump = subscribers_table_schema.dump(data)
@@ -104,7 +104,7 @@ class SubscriberList(Resource):
 
 
 api.add_resource(Subscriber, '/subscriber/<string:id>')
-api.add_resource(SubscriberList, '/subscribers')
+api.add_resource(Subscribers, '/subscriber')
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
